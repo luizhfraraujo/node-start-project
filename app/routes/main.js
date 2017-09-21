@@ -1,15 +1,20 @@
+ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
+
 module.exports = function(app) {
+    app.get('/account', ensureLoggedIn('/login'), function(req, res){
+        res.render('auth/account');
+    });
+
     app.get('/', function(req, res) {
-        var connection = app.infra.connectionFactory();
-        var users = app.models.Users(connection);
         
-        users.create({
-            nome: 'Luiz Henrique rodrigues',
-            sobrenome: 'Freitas',
-            senha: '123'
+        var db =  app.infra.connectionFactory;
+        var Users = db.Mongoose.model('usercollection', db.UserSchema, 'usercollection');
+        Users.find({}).lean().exec(
+           function (e, docs) {
+               console.log(docs)
+              res.render('main/index', { "usuarios": docs });
         });
 
-        res.render('main/index', {usuarios:''});
         /*
         users.lista( function(err, results) {
             if(err) {
@@ -23,6 +28,6 @@ module.exports = function(app) {
     });
 
     app.get('/sobre', function(req, res) {
-        res.render('main/about');
+        res.render('main/about', { });
     });
 }

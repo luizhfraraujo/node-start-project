@@ -2,6 +2,8 @@ var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser')
 var expressValidator = require('express-validator');
+var passport = require('passport');
+var expressSession = require('express-session');
 
 
 module.exports = function() {   
@@ -13,6 +15,18 @@ module.exports = function() {
     app.use(bodyParser.json());
     app.use(expressValidator());
 
+    app.use(expressSession({secret: 'minhaChaveSecreta'}));
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    passport.serializeUser(function(user, done) {
+        done(null, user);
+      });
+      
+      passport.deserializeUser(function(obj, done) {
+        done(null, obj);
+      });
+    
     app.use(express.static('./app/public'));
     load('routes', {cwd: 'app'})
         .then('infra')

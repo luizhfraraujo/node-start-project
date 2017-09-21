@@ -9,64 +9,33 @@
     
   </head>
   <body>
-      <nav class="navbar">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="http://bulma.io">
-                <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-            </a>  
-              
-            <div class="navbar-burger burger" data-target="navMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            
-        </div>
       
-        <div id="navMenu" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item is-hoverable" href="/">Home</a>
-                <a class="navbar-item is-hoverable" href="/sobre">Sobre</a>
+      <% include ../partials/main-menu %>
+
+      <section class="hero">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Home
+              </h1>
+              <h2 class="subtitle">
+                Página inicial do site
+              </h2>
             </div>
-            <div class="navbar-end">
-                <a class="navbar-item is-hoverable" href="#">Entrar</a>
-                <a class="navbar-item is-hoverable" href="#">Cadastrar</a>
-            </div>
-        </div>
-    </nav>
-    <section class="hero">
-            <div class="hero-body">
-              <div class="container">
-                <h1 class="title">
-                  Home
-                </h1>
-                <h2 class="subtitle">
-                  Página inicial do site
-                </h2>
-              </div>
-            </div>
-          </section>
-          <section class="section">
+          </div>
+        </section>
+
+
+        <section class="section">
+            <p>Usuarios</p>
                 <%for(i=0; i<usuarios.length; i++) {%>
-                    <p><%=usuarios[i].nome%></p>
+                    <p><%=usuarios[i].email%> - <%=usuarios[i].password%></p>
                 <%}%>
           </section>
-  <footer class="footer">
-        <div class="container">
-          <div class="content has-text-centered">
-            <p>
-              <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-              <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-              is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-            </p>
-            <p>
-              <a class="icon" href="https://github.com/jgthms/bulma">
-                <i class="fa fa-github"></i>
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
-  <script src="js/bulma.js"></script>
+
+   
+          <% include ../partials/main-footer %>
+
+          <script src="js/bulma.js"></script>
   </body>
 </html>
