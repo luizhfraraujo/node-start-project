@@ -1,0 +1,24 @@
+{
+  "name": "start-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "copy-bulma": "cat node_modules/bulma/css/bulma.css > app/public/css/bulma.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "bulma": "^0.5.3",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "express-load": "^1.1.16",
+    "express-validator": "^4.2.0",
+    "sequelize": "^4.9.0",
+    "socket.io": "^2.0.3",
+    "sqlite3": "^3.1.11"
+  }
+}
